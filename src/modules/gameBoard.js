@@ -26,14 +26,31 @@ class GameBoard {
     if (shipLength < 0 || shipLength > 5) return null;
 
     if (10 - pairCoordinate[1] >= shipLength) {
+      if (!this.isHorizontalPosEmpty(shipLength, pairCoordinate)) return null;
+
       const ship = new Ship(shipLength);
+
       for (let i = 0; i < shipLength; i++) {
         this.board[pairCoordinate[0]][pairCoordinate[1]] = 'ship';
         ship.position.push([pairCoordinate[0], pairCoordinate[1]]);
         pairCoordinate[1]++;
       }
+
       return ship;
     }
+  }
+
+  isHorizontalPosEmpty(shipLength, pairCoordinate) {
+    const tempArr = [...pairCoordinate];
+
+    for (let i = 0; i < shipLength; i++) {
+      if (this.board[tempArr[0]][tempArr[1]] === 'ship') {
+        return false;
+      }
+      tempArr[1]++;
+    }
+
+    return true;
   }
 
   placeShipVertical(shipLength, pairCoordinate) {}
