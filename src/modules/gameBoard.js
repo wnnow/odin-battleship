@@ -53,7 +53,42 @@ class GameBoard {
     return true;
   }
 
-  placeShipVertical(shipLength, pairCoordinate) {}
+  placeShipVertical(shipLength, pairCoordinate) {
+    for (let element of pairCoordinate) {
+      if (element < 0 || element > 9) {
+        return null;
+      }
+    }
+
+    if (shipLength < 0 || shipLength > 5) return null;
+
+    if (10 - pairCoordinate[0] >= shipLength) {
+      if (!this.isVerticalPosEmpty(shipLength, pairCoordinate)) return null;
+
+      const ship = new Ship(shipLength);
+
+      for (let i = 0; i < shipLength; i++) {
+        this.board[pairCoordinate[0]][pairCoordinate[1]] = 'ship';
+        ship.position.push([pairCoordinate[0], pairCoordinate[1]]);
+        pairCoordinate[0]++;
+      }
+
+      return ship;
+    }
+  }
+
+  isVerticalPosEmpty(shipLength, pairCoordinate) {
+    const tempArr = [...pairCoordinate];
+
+    for (let i = 0; i < shipLength; i++) {
+      if (this.board[tempArr[0]][tempArr[1]] === 'ship') {
+        return false;
+      }
+      tempArr[0]++;
+    }
+
+    return true;
+  }
 
   // determines whether or not the attack hit a ship and
   // then sends the ‘hit’ function to the correct ship,
