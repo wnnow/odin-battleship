@@ -1,5 +1,93 @@
-.hello {
-  color: rgb(255, 0, 0);
+:root {
+  --main-color: #68c174;
+  --main-text-color: #fbfbfb;
+}
 
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  font: inherit;
+}
+
+html {
+  font-family: 'Roboto', sans-serif;
+  /* color-scheme: dark light; */
+}
+
+body {
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+img,
+picture,
+svg,
+video {
+  display: block;
+  max-width: 100%;
+}
+
+img {
+  vertical-align: middle;
+  height: auto;
+  font-style: italic;
+  background-repeat: no-repeat;
+  background-size: cover;
+  shape-margin: 0.75rem;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  text-wrap: balance;
+}
+
+p {
+  max-width: 75ch;
+  text-wrap: pretty;
   font-size: 2rem;
+}
+
+input {
+  outline: none;
+  border: 1px solid black;
+  border-radius: 10px;
+  width: 100%;
+  padding: 2px 4px;
+}
+
+button {
+  outline: none;
+  border: none;
+  background-color: transparent;
+  background-repeat: no-repeat;
+  cursor: pointer;
+  overflow: hidden;
+  outline: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  :has(:target) {
+    scroll-behavior: smooth;
+  }
+}
+#header {
+  text-align: center;
+  padding-top: 25px;
+  padding-bottom: 25px;
+  background-color: var(--main-color);
+  color: var(--main-text-color);
+  font-size: 1.5rem;
+  font-weight: bold;
 }
