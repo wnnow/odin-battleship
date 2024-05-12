@@ -16,27 +16,25 @@ class GameBoard {
     }
   }
 
-  placeShipHorizontal(shipLength, pairCoordinate) {
+  placeShipHorizontal(ship, pairCoordinate) {
     for (let element of pairCoordinate) {
       if (element < 0 || element > 9) {
         return null;
       }
     }
 
-    if (shipLength < 0 || shipLength > 5) return null;
+    if (ship.length < 0 || ship.length > 5) return null;
 
-    if (10 - pairCoordinate[1] >= shipLength) {
-      if (!this.isHorizontalPosEmpty(shipLength, pairCoordinate)) return null;
+    if (10 - pairCoordinate[1] >= ship.length) {
+      if (!this.isHorizontalPosEmpty(ship.length, pairCoordinate)) return null;
 
-      const ship = new Ship(shipLength);
-
-      for (let i = 0; i < shipLength; i++) {
+      for (let i = 0; i < ship.length; i++) {
         this.board[pairCoordinate[0]][pairCoordinate[1]] = 'ship';
         ship.position.push([pairCoordinate[0], pairCoordinate[1]]);
         pairCoordinate[1]++;
       }
 
-      return ship;
+      return;
     }
   }
 
@@ -53,27 +51,23 @@ class GameBoard {
     return true;
   }
 
-  placeShipVertical(shipLength, pairCoordinate) {
+  placeShipVertical(ship, pairCoordinate) {
     for (let element of pairCoordinate) {
       if (element < 0 || element > 9) {
         return null;
       }
     }
 
-    if (shipLength < 0 || shipLength > 5) return null;
+    if (ship.length < 0 || ship.length > 5) return null;
 
-    if (10 - pairCoordinate[0] >= shipLength) {
-      if (!this.isVerticalPosEmpty(shipLength, pairCoordinate)) return null;
+    if (10 - pairCoordinate[0] >= ship.length) {
+      if (!this.isVerticalPosEmpty(ship.length, pairCoordinate)) return null;
 
-      const ship = new Ship(shipLength);
-
-      for (let i = 0; i < shipLength; i++) {
+      for (let i = 0; i < ship.length; i++) {
         this.board[pairCoordinate[0]][pairCoordinate[1]] = 'ship';
         ship.position.push([pairCoordinate[0], pairCoordinate[1]]);
         pairCoordinate[0]++;
       }
-
-      return ship;
     }
   }
 
@@ -93,9 +87,33 @@ class GameBoard {
   // determines whether or not the attack hit a ship and
   // then sends the ‘hit’ function to the correct ship,
   // or records the coordinates of the missed shot.
-  receiveAttack(pairCoordinate) {}
+  receiveAttack(pairCoordinate) {
+    for (let element of pairCoordinate) {
+      if (element < 0 || element > 9) {
+        return null;
+      }
+    }
 
-  isHit(pairCoordinate) {}
+    if (this.isHit(pairCoordinate)) {
+      // if miss change 0 to 'miss'
+      if (this.board[pairCoordinate[0]][pairCoordinate[1]] === 0) {
+        this.board[pairCoordinate[0]][pairCoordinate[1]] = 'miss';
+        return;
+      }
+      // if hit the ship
+      if (this.board[pairCoordinate[0]][pairCoordinate[1]] === 'ship') {
+      }
+      //check that pos have ship or not
+    }
+  }
+
+  isHit(pairCoordinate) {
+    const tempArr = [...pairCoordinate];
+    if (this.board[tempArr[0]][tempArr[1]] === 'ship') {
+      return true;
+    }
+    return false;
+  }
 }
 
 // const playerTableContainer = document.querySelector('#player-table-container');
