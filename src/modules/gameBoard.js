@@ -90,12 +90,9 @@ class GameBoard {
     return true;
   }
 
-  // determines whether or not the attack hit a ship and
-  // then sends the ‘hit’ function to the correct ship,
-  // or records the coordinates of the missed shot.
   receiveAttack(coordinates) {
-    for (let element of coordinates) {
-      if (element < 0 || element > 9) {
+    for (let num of coordinates) {
+      if (num < 0 || num > 9) {
         return null;
       }
     }
@@ -103,7 +100,7 @@ class GameBoard {
     // if miss change 0 to 'miss'
     if (this.board[coordinates[0]][coordinates[1]] === 0) {
       this.board[coordinates[0]][coordinates[1]] = 'miss';
-      return 'miss';
+      return this.board[coordinates[0]][coordinates[1]];
     }
 
     // if hit the ship
@@ -112,18 +109,15 @@ class GameBoard {
       this.ships.forEach((ship) => {
         if (
           ship.position.some(
-            (element) =>
-              element[0] === coordinates[0] && element[1] === coordinates[1]
+            (pos) => pos[0] === coordinates[0] && pos[1] === coordinates[1]
           )
         ) {
           ship.hit();
+          return this.board[coordinates[0]][coordinates[1]];
         }
       });
     }
   }
 }
-
-// const playerTableContainer = document.querySelector('#player-table-container');
-// console.log('🚀 ~ playerTableContainer:', playerTableContainer);
 
 export { GameBoard };
