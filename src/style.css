@@ -82,7 +82,15 @@ button {
     scroll-behavior: smooth;
   }
 }
-#header {
+
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+#header,
+#footer {
   text-align: center;
   padding-top: 25px;
   padding-bottom: 25px;
@@ -90,4 +98,48 @@ button {
   color: var(--main-text-color);
   font-size: 1.5rem;
   font-weight: bold;
+}
+
+#game-board-container {
+  display: flex;
+  justify-content: space-around;
+}
+
+.player-table,
+.opponent-table {
+  box-sizing: content-box;
+  display: flex;
+  line-height: none;
+  flex-wrap: wrap;
+  width: 400px;
+  height: 400px;
+  border: 1px solid rgb(66, 66, 66);
+}
+
+.row {
+  display: inline-flex;
+  flex-wrap: wrap;
+  /* border: 1px solid black; */
+}
+
+.cell {
+  width: 40px;
+  height: 40px;
+  background-color: rgb(255, 255, 255);
+  border: 1px solid rgb(66, 66, 66);
+}
+
+.miss {
+  background-color: #c9c9c9;
+}
+
+.hit {
+  background-color: pink;
+  border: 1px solid red;
+}
+
+.table-grid-text {
+  margin-top: 25px;
+  text-align: center;
+  color: rgb(66, 66, 66);
 }

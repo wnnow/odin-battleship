@@ -9,8 +9,77 @@
   <body>
     <header id="header">Battleship</header>
     <main id="main">
-      <div id="player-table-container"></div>
-      <div id="computer-table-container"></div>
+      <div class="show-turn-text"></div>
+      <div id="game-board-container">
+        <div id="player-table-container">
+          <div class="player-table"></div>
+          <div class="table-grid-text">Your grid</div>
+        </div>
+        <div id="opponent-table-container">
+          <div class="opponent-table"></div>
+          <div class="table-grid-text">Opponent's grid</div>
+        </div>
+      </div>
     </main>
+    <footer id="footer">footer copyright</footer>
+    <script>
+      function createPlayerTable() {
+        const playerTable = document.querySelector('.player-table');
+        for (let i = 0; i < 10; i++) {
+          const row = document.createElement('div');
+          row.classList.add('row');
+          for (let j = 0; j < 10; j++) {
+            const element = document.createElement('div');
+            element.classList.add('cell');
+            element.setAttribute('data-row', i);
+            element.setAttribute('data-col', j);
+            row.appendChild(element);
+          }
+          playerTable.appendChild(row);
+        }
+      }
+      function createOpponentsTable() {
+        const opponentTable = document.querySelector('.opponent-table');
+        for (let i = 0; i < 10; i++) {
+          const row = document.createElement('div');
+          row.classList.add('row');
+          for (let j = 0; j < 10; j++) {
+            const element = document.createElement('div');
+            element.classList.add('cell');
+            element.setAttribute('data-row', i);
+            element.setAttribute('data-col', j);
+            element.addEventListener('click', (e) => {
+              console.log(e.target.dataset);
+            });
+            row.appendChild(element);
+          }
+          opponentTable.appendChild(row);
+        }
+      }
+
+      const opponentTable = document.querySelector('.opponent-table');
+      const playerTable = document.querySelector('.player-table');
+      function createTable(parentElement) {
+        for (let i = 0; i < 10; i++) {
+          const row = document.createElement('div');
+          row.classList.add('row');
+          for (let j = 0; j < 10; j++) {
+            const element = document.createElement('div');
+            element.classList.add('cell');
+            element.setAttribute('data-row', i);
+            element.setAttribute('data-col', j);
+            element.addEventListener('click', (e) => {
+              console.log(e.target.dataset);
+            });
+            row.appendChild(element);
+          }
+          parentElement.appendChild(row);
+        }
+      }
+      // createPlayerTable();
+      // createOpponentsTable();
+      createTable(opponentTable);
+      createTable(playerTable);
+    </script>
   </body>
 </html>
