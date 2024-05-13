@@ -215,3 +215,14 @@ describe('place both vertical and horizontal', () => {
     ]);
   });
 });
+
+test('random placing ship', () => {
+  testBoard.createBoard();
+  testBoard.randomPlacingShipPos();
+  console.log(testBoard.board);
+  console.log(testBoard.ships[0]);
+  console.log(testBoard.ships[1]);
+  console.log(testBoard.ships[2]);
+  console.log(testBoard.ships[3]);
+  console.log(testBoard.ships[4]);
+});

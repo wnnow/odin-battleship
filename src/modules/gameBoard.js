@@ -40,7 +40,7 @@ class GameBoard {
         coordinates[1]++;
       }
 
-      return;
+      return true;
     }
   }
 
@@ -74,6 +74,7 @@ class GameBoard {
         ship.position.push([coordinates[0], coordinates[1]]);
         coordinates[0]++;
       }
+      return true;
     }
   }
 
@@ -116,6 +117,30 @@ class GameBoard {
           return this.board[coordinates[0]][coordinates[1]];
         }
       });
+    }
+  }
+
+  randomPlacingShipPos() {
+    for (let ship of this.ships) {
+      let placed = false;
+      while (!placed) {
+        const randomX = Math.floor(Math.random() * 10);
+        const randomY = Math.floor(Math.random() * 10);
+        const orientation = Math.random() < 0.5 ? 'horizontal' : 'vertical';
+
+        if (orientation === 'horizontal') {
+          placed = this.placeShipHorizontal(ship, [randomX, randomY]);
+        } else {
+          placed = this.placeShipVertical(ship, [randomX, randomY]);
+        }
+      }
+
+      // Ensure ship's position length matches its length
+      if (ship.position.length !== ship.length) {
+        ship.position = []; // Reset position if not placed properly
+        this.randomPlacingShipPosition(); // Try placing the ship again
+        return; // Exit the loop
+      }
     }
   }
 }
