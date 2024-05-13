@@ -39,6 +39,12 @@ function createOpponentsTable() {
       element.setAttribute('data-col', j);
 
       element.addEventListener('click', (e) => {
+        if (
+          element.classList.contains('hit') ||
+          element.classList.contains('miss')
+        ) {
+          return;
+        }
         const coordinates = [
           parseInt(e.target.dataset.row),
           parseInt(e.target.dataset.col),
