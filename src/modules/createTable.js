@@ -46,6 +46,7 @@ function createOpponentsTable() {
         const value = opponent.gameBoard.receiveAttack(coordinates);
         styleCell(e.target, value);
         console.log(opponent.gameBoard.board);
+        console.log(opponent.gameBoard.ships);
       });
 
       element.addEventListener('mouseover', () => {

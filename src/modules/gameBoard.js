@@ -97,6 +97,10 @@ class GameBoard {
         return null;
       }
     }
+    //if this position got hit before return
+    if (this.board[coordinates[0]][coordinates[1]] === 'hit') {
+      return;
+    }
 
     // if miss change 0 to 'miss'
     if (this.board[coordinates[0]][coordinates[1]] === 0) {
@@ -107,6 +111,7 @@ class GameBoard {
     // if hit the ship
     if (this.board[coordinates[0]][coordinates[1]] === 'ship') {
       //find ship in that position which one of player or computer ship
+      let hitResult = null;
       this.ships.forEach((ship) => {
         if (
           ship.position.some(
@@ -114,9 +119,11 @@ class GameBoard {
           )
         ) {
           ship.hit();
-          return this.board[coordinates[0]][coordinates[1]];
+          hitResult = 'hit';
+          this.board[coordinates[0]][coordinates[1]] = 'hit';
         }
       });
+      return hitResult;
     }
   }
 
