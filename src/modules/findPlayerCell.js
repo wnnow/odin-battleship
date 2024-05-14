@@ -14,6 +14,4 @@ function findPlayerCell(coordinates) {
   }
 }
 
-console.log(findPlayerCell([0, 2]));
-
 export { findPlayerCell };

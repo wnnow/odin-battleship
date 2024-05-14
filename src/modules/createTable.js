@@ -1,5 +1,9 @@
-import { opponent } from '../index';
+import { opponent, player } from '../index';
 import { styleCell } from './styleCell';
+import {
+  randomShootPlayerShip,
+  handlePlayerShotCoordinates,
+} from './computerAutoPlay';
 
 function createPlayerTable() {
   const playerTable = document.querySelector('.player-table');
@@ -52,7 +56,14 @@ function createOpponentsTable() {
 
         const value = opponent.gameBoard.receiveAttack(coordinates);
         console.log(opponent.gameBoard.board);
+
         styleCell(e.target, value);
+        if (opponent.gameBoard.isGameEnd()) {
+          alert('You Win');
+        }
+
+        const playerShotCoordinates = randomShootPlayerShip();
+        handlePlayerShotCoordinates(playerShotCoordinates);
       });
 
       cell.addEventListener('mouseover', () => {

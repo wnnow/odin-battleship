@@ -1,5 +1,4 @@
 function styleCell(element, value) {
-  console.log(element);
   if (value === 'ship') {
     element.classList.add('ship');
   }

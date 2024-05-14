@@ -216,16 +216,16 @@ describe('place both vertical and horizontal', () => {
   });
 });
 
-// test('random placing ship', () => {
-//   testBoard.createBoard();
-//   testBoard.randomPlacingShipPos();
-//   console.log(testBoard.board);
-//   console.log(testBoard.ships[0]);
-//   console.log(testBoard.ships[1]);
-//   console.log(testBoard.ships[2]);
-//   console.log(testBoard.ships[3]);
-//   console.log(testBoard.ships[4]);
-// });
+test('random placing ship', () => {
+  testBoard.createBoard();
+  testBoard.randomPlacingShipPos();
+  console.log(testBoard.board);
+  console.log(testBoard.ships[0]);
+  console.log(testBoard.ships[1]);
+  console.log(testBoard.ships[2]);
+  console.log(testBoard.ships[3]);
+  console.log(testBoard.ships[4]);
+});
 
 test('is game end = false', () => {
   expect(testBoard.isGameEnd()).toBe(false);
@@ -242,3 +242,9 @@ test('is game end = true', () => {
   }
   expect(testBoard.isGameEnd()).toBe(true);
 });
+const coordinatesArray = [];
+for (let i = 0; i < 10; i++) {
+  for (let j = 0; j < 10; j++) {
+    coordinatesArray.push([i, j]);
+  }
+}
