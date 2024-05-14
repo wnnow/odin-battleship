@@ -11,12 +11,12 @@ function createPlayerTable() {
     row.classList.add('row');
 
     for (let j = 0; j < 10; j++) {
-      const element = document.createElement('div');
+      const cell = document.createElement('div');
 
-      element.classList.add('cell');
-      element.setAttribute('data-row', i);
-      element.setAttribute('data-col', j);
-      row.appendChild(element);
+      cell.classList.add('cell');
+      cell.setAttribute('data-row', i);
+      cell.setAttribute('data-col', j);
+      row.appendChild(cell);
     }
 
     playerTable.appendChild(row);
@@ -26,42 +26,44 @@ function createPlayerTable() {
 function createOpponentsTable() {
   const opponentTable = document.querySelector('.opponent-table');
 
+  //create row element
   for (let i = 0; i < 10; i++) {
     const row = document.createElement('div');
     row.setAttribute('data-array-row', i);
     row.classList.add('row');
 
+    //create cell cell
     for (let j = 0; j < 10; j++) {
-      const element = document.createElement('div');
+      const cell = document.createElement('div');
 
-      element.classList.add('cell');
-      element.setAttribute('data-row', i);
-      element.setAttribute('data-col', j);
+      cell.classList.add('cell');
+      cell.setAttribute('data-row', i);
+      cell.setAttribute('data-col', j);
 
-      element.addEventListener('click', (e) => {
-        if (
-          element.classList.contains('hit') ||
-          element.classList.contains('miss')
-        ) {
+      cell.addEventListener('click', (e) => {
+        if (cell.classList.contains('hit') || cell.classList.contains('miss')) {
           return;
         }
+
         const coordinates = [
           parseInt(e.target.dataset.row),
           parseInt(e.target.dataset.col),
         ];
+
         const value = opponent.gameBoard.receiveAttack(coordinates);
-        styleCell(e.target, value);
         console.log(opponent.gameBoard.board);
-        console.log(opponent.gameBoard.ships);
+        styleCell(e.target, value);
       });
 
-      element.addEventListener('mouseover', () => {
-        element.classList.add('hovered-cell');
+      cell.addEventListener('mouseover', () => {
+        cell.classList.add('hovered-cell');
       });
-      element.addEventListener('mouseout', () => {
-        element.classList.remove('hovered-cell');
+
+      cell.addEventListener('mouseout', () => {
+        cell.classList.remove('hovered-cell');
       });
-      row.appendChild(element);
+
+      row.appendChild(cell);
     }
 
     opponentTable.appendChild(row);

@@ -150,6 +150,10 @@ class GameBoard {
       }
     }
   }
+
+  isGameEnd() {
+    return this.ships.every((ship) => ship.sunkStatus == true);
+  }
 }
 
 export { GameBoard };

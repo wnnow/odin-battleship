@@ -216,13 +216,29 @@ describe('place both vertical and horizontal', () => {
   });
 });
 
-test('random placing ship', () => {
+// test('random placing ship', () => {
+//   testBoard.createBoard();
+//   testBoard.randomPlacingShipPos();
+//   console.log(testBoard.board);
+//   console.log(testBoard.ships[0]);
+//   console.log(testBoard.ships[1]);
+//   console.log(testBoard.ships[2]);
+//   console.log(testBoard.ships[3]);
+//   console.log(testBoard.ships[4]);
+// });
+
+test('is game end = false', () => {
+  expect(testBoard.isGameEnd()).toBe(false);
+});
+
+test('is game end = true', () => {
   testBoard.createBoard();
   testBoard.randomPlacingShipPos();
-  console.log(testBoard.board);
-  console.log(testBoard.ships[0]);
-  console.log(testBoard.ships[1]);
-  console.log(testBoard.ships[2]);
-  console.log(testBoard.ships[3]);
-  console.log(testBoard.ships[4]);
+  expect(testBoard.isGameEnd()).toBe(false);
+  for (const key in testBoard.ships) {
+    for (const coordinates of testBoard.ships[key].position) {
+      testBoard.receiveAttack(coordinates);
+    }
+  }
+  expect(testBoard.isGameEnd()).toBe(true);
 });
