@@ -154,6 +154,14 @@ class GameBoard {
   isGameEnd() {
     return this.ships.every((ship) => ship.sunkStatus == true);
   }
+
+  resetBoard() {
+    this.board = [];
+    this.ships.forEach((ship) => {
+      ship.position = [];
+      ship.sunkStatus = false;
+    });
+  }
 }
 
 export { GameBoard };

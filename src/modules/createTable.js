@@ -45,7 +45,11 @@ function createOpponentsTable() {
       cell.setAttribute('data-col', j);
 
       cell.addEventListener('click', (e) => {
-        if (cell.classList.contains('hit') || cell.classList.contains('miss')) {
+        if (
+          cell.classList.contains('hit') ||
+          cell.classList.contains('miss') ||
+          opponent.gameBoard.isGameEnd()
+        ) {
           return;
         }
 
@@ -55,7 +59,6 @@ function createOpponentsTable() {
         ];
 
         const value = opponent.gameBoard.receiveAttack(coordinates);
-        console.log(opponent.gameBoard.board);
 
         styleCell(e.target, value);
         if (opponent.gameBoard.isGameEnd()) {

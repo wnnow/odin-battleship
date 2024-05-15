@@ -149,6 +149,23 @@ body {
   color: rgb(66, 66, 66);
 }
 
+#random-player-ship-position {
+  background-color: var(--main-color);
+  color: var(--main-text-color);
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-size: 1.2rem;
+}
+
+#random-player-ship-position:hover {
+  background-color: #4fa75b;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+}
+
 .hovered-cell {
   background-color: #cdffd9;
 }

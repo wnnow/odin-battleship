@@ -109,13 +109,15 @@ const coordinatesArray = [
 function randomShootPlayerShip() {
   const random = Math.floor(Math.random() * coordinatesArray.length);
   const [shotCoordinates] = coordinatesArray.splice(random, 1);
+
   return shotCoordinates;
 }
 function handlePlayerShotCoordinates(coordinates) {
   const shotValue = player.gameBoard.receiveAttack(coordinates);
   const cell = findPlayerCell(coordinates);
+
   styleCell(cell, shotValue);
-  console.log(player.gameBoard.board);
+
   if (player.gameBoard.isGameEnd()) {
     alert('Opponent win');
   }

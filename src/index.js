@@ -4,6 +4,7 @@ import { findPlayerCell } from './modules/findPlayerCell';
 import { Player, stylePlayerCell } from './modules/player';
 import { randomShootPlayerShip } from './modules/computerAutoPlay';
 import { Ship } from './modules/ship';
+import { randomShipPosition } from './modules/randomShipPosBtn';
 
 const opponent = new Player();
 const player = new Player();
