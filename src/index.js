@@ -6,6 +6,7 @@ import { randomShootPlayerShip } from './modules/computerAutoPlay';
 import { Ship } from './modules/ship';
 import { randomShipPosition } from './modules/randomShipPosBtn';
 import { createEndGamePopup } from './modules/endGamePopup';
+import logo from './images/github-mark-white.png';
 
 // const opponent = new Player();
 // const player = new Player();
@@ -33,5 +34,15 @@ function initializeGame() {
   stylePlayerCell();
 }
 initializeGame();
+
+function addFooterImageLogo() {
+  const footerLink = document.querySelector('#footer>a');
+  const githubLogo = new Image();
+  githubLogo.src = logo;
+  githubLogo.classList.add('github-logo');
+  githubLogo.alt = 'github inverto cat logo';
+  footerLink.appendChild(githubLogo);
+}
+addFooterImageLogo();
 
 export { opponent, player, initializeGame };
