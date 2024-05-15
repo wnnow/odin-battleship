@@ -4,6 +4,7 @@ import {
   randomShootPlayerShip,
   handlePlayerShotCoordinates,
 } from './computerAutoPlay';
+import { createEndGamePopup } from './endGamePopup';
 
 function createPlayerTable() {
   const playerTable = document.querySelector('.player-table');
@@ -62,7 +63,7 @@ function createOpponentsTable() {
 
         styleCell(e.target, value);
         if (opponent.gameBoard.isGameEnd()) {
-          alert('You Win');
+          createEndGamePopup();
         }
 
         const playerShotCoordinates = randomShootPlayerShip();
@@ -83,8 +84,5 @@ function createOpponentsTable() {
     opponentTable.appendChild(row);
   }
 }
-
-createPlayerTable();
-createOpponentsTable();
 
 export { createPlayerTable, createOpponentsTable };

@@ -149,7 +149,8 @@ body {
   color: rgb(66, 66, 66);
 }
 
-#random-player-ship-position {
+#random-player-ship-position-btn,
+#play-again-btn {
   background-color: var(--main-color);
   color: var(--main-text-color);
   padding: 8px 16px;
@@ -157,7 +158,8 @@ body {
   font-size: 1.2rem;
 }
 
-#random-player-ship-position:hover {
+#random-player-ship-position-btn:hover,
+#play-again-btn:hover {
   background-color: #4fa75b;
 }
 
@@ -168,4 +170,45 @@ body {
 
 .hovered-cell {
   background-color: #cdffd9;
+}
+
+.popup-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 300px;
+  height: 200px;
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  border-radius: 16px;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+  z-index: 1000;
+}
+
+.popup-text {
+  text-align: center;
+  color: #424242;
+  font-size: 2rem;
+  padding: 10px;
+}
+
+.blur-background {
+  filter: blur(4px);
+  -webkit-filter: blur(4px);
+  pointer-events: none;
+}
+
+.github-logo {
+  width: 25px;
+}
+
+#footer {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
 }

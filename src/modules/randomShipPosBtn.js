@@ -1,28 +1,35 @@
-import { player, opponent } from '../index';
+import { player, opponent, initializeGame } from '../index';
 import { createPlayerTable, createOpponentsTable } from './createTable';
 import { stylePlayerCell } from './player';
+import {
+  coordinatesArray,
+  getDefaultCoordinatesArray,
+  resetCoordinatesArray,
+} from './computerAutoPlay';
 
-const randomBtn = document.querySelector('#random-player-ship-position');
+const randomBtn = document.querySelector('#random-player-ship-position-btn');
 
 const playerTable = document.querySelector('.player-table');
 const opponentTable = document.querySelector('.opponent-table');
 
 function randomShipPosition(player, opponent) {
+  resetCoordinatesArray();
   player.gameBoard.resetBoard();
   opponent.gameBoard.resetBoard();
 
   removeAllChildElement(playerTable);
   removeAllChildElement(opponentTable);
 
-  player.gameBoard.createBoard();
-  opponent.gameBoard.createBoard();
-  createPlayerTable();
-  createOpponentsTable();
+  initializeGame();
+  // player.gameBoard.createBoard();
+  // opponent.gameBoard.createBoard();
+  // createPlayerTable();
+  // createOpponentsTable();
 
-  player.gameBoard.randomPlacingShipPos();
-  opponent.gameBoard.randomPlacingShipPos();
+  // player.gameBoard.randomPlacingShipPos();
+  // opponent.gameBoard.randomPlacingShipPos();
 
-  stylePlayerCell();
+  // stylePlayerCell();
 }
 
 function removeAllChildElement(element) {
